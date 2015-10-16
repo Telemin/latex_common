@@ -1,0 +1,31 @@
+\usepackage{ifthen}
+%%% Math Commands
+
+%General math commands
+
+\newcommand{\unit}[1]{\ensuremath{\ \mathrm{#1}}}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\let\oldhat\hat
+\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
+\newcommand*{\E}{\unit{e}}
+
+\newcommand{\pd}[1]{\ensuremath{\operatorname{\partial}\!{#1}}} 
+\newcommand{\npd}[2][2]{\ensuremath{\operatorname{\partial}^{#1}\!{#2}}} 
+\renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}} 
+\newcommand{\nd}[2][2]{\ensuremath{\operatorname{\d}^{#1}\!{#2}}} 
+
+% complex numbers
+\renewcommand{\imath}{\mathit{i}}
+\renewcommand{\Re}{\mathbf{Re}}
+\renewcommand{\Im}{\mathbf{Im}}
+
+% derivatives
+\newcommand{\pdiv}[2]{\ensuremath{\frac{\pd{#1}}{\pd{#2}}}}
+\newcommand{\npdiv}[3][2]{\ensuremath{\frac{\npd[#1]{#2}}{\d{#3^#1}}}}
+\newcommand{\tdiv}[2]{\ensuremath{\frac{\d{#1}}{\d{#2}}}}
+\newcommand{\ntdiv}[3][2]{\ensuremath{\frac{\nd[#1]{#2}}{\d{#3^#1}}}}
+%vector operators
+\newcommand{\vgrad}[1]{\ensuremath{\vec{\nabla} #1}}
+\newcommand{\vdiv}[1]{\ensuremath{\vec{\nabla \cdot #1}}}
+\newcommand{\vcurl}[1]{\ensuremath{\vec{\nabla \times #1}}}
+\newcommand{\vlap}[1]{\ensuremath{\nabla^2 #1}}
