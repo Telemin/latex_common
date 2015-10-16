@@ -1,4 +1,13 @@
 \usepackage{ifthen}
+
+\def\VAL{{\color{blue}\framebox[1.1\width]{\textbf{VALUE}}~}}
+\def\REF{{\color{red}\framebox[1.1\width]{REF}~}}
+\def\CITE{{\color{red}\framebox[1.1\width]{CITE}~}}
+
+\newcommand{\TODO}[1]{{\color{red}\large{\textbf{TODO: #1}}\normalsize}}
+\newcommand{\PLACEHOLDER}[1]{{\textit{\color{red}(#1)}}}
+\newcommand{\NOTE}[1]{{\color{red}\begin{framed}\noindent\textbf{NOTE:} #1 \end{framed}}}
+
 %%% Math Commands
 
 %General math commands
