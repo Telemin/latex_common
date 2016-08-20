@@ -1,13 +1,46 @@
+\usepackage{framed}
 \usepackage{ifthen}
+\usepackage[x11names]{xcolor}
+\usepackage{soul}
+%\definecolor{ForestGreen}{HTML}{228B22}
 
-\def\VAL{{\color{blue}\framebox[1.1\width]{\textbf{VALUE}}~}}
-\def\REF{{\color{red}\framebox[1.1\width]{REF}~}}
-\def\CITE{{\color{red}\framebox[1.1\width]{CITE}~}}
+%%% Referencing Commands
 
-\newcommand{\TODO}[1]{{\color{red}\large{\textbf{TODO: #1}}\normalsize}}
-\newcommand{\PLACEHOLDER}[1]{{\textit{\color{red}(#1)}}}
-\newcommand{\NOTE}[1]{{\color{red}\begin{framed}\noindent\textbf{NOTE:} #1 \end{framed}}}
+\newcommand{\Figref}[1]{{Figure~\ref{#1}}}                                                   
+\soulregister\Figref{7}
+\newcommand{\figref}[1]{{Fig.~\ref{#1}}}                                                   
+\soulregister\figref{7}
+\newcommand{\secref}[1]{{Section~\ref{#1}}}
+\soulregister\secref{7}
+\newcommand{\nbcite}[1]{~\cite{#1}}
+\soulregister\nbcite{7}
 
+%%% Math spacing
+% For comparison, the existing overlap macros:
+% \def\llap#1{\hbox to 0pt{\hss#1}}
+% \def\rlap#1{\hbox to 0pt{#1\hss}}
+\def\clap#1{\hbox to 0pt{\hss#1\hss}}
+\def\mathllap{\mathpalette\mathllapinternal}
+\def\mathrlap{\mathpalette\mathrlapinternal}
+\def\mathclap{\mathpalette\mathclapinternal}
+\def\mathllapinternal#1#2{\llap{$\mathsurround=0pt#1{#2}$}}
+\def\mathrlapinternal#1#2{\rlap{$\mathsurround=0pt#1{#2}$}}
+\def\mathclapinternal#1#2{\clap{$\mathsurround=0pt#1{#2}$}}
+
+%%% Placeholder macros
+
+%\let\oldcite\cite
+%\renewcommand{\cite}[1]{\ifthenelse{\equal{#1}{}}{\textsuperscript{\color{Firebrick3}[citation-needed]}}{\oldcite{#1}}}
+
+\newcommand{\VAL}[1]{{\color{blue}\framebox[1.1\width]{\textbf{VALUE}}~}}
+\def\REF{{\color{Firebrick3}\framebox[1.1\width]{REF}~}}
+\def\CITE{{\color{Firebrick3}\framebox[1.1\width]{CITE}~}}
+
+\newcommand{\TODO}[1]{{\color{Firebrick3}\large{\textbf{TODO: #1}}\normalsize}}
+\newcommand{\PLACEHOLDER}[1]{{\textit{\color{Firebrick3}#1}}}
+\newcommand{\BOXCOMMENT}[1]{{\color{Green4}\begin{framed}\noindent\emph{#1}\end{framed}}}
+\newcommand{\COMMENT}[1]{{\color{Green4}\emph{#1}}}
+\newcommand{\NOTE}[1]{\BOXCOMMENT{N.B. \\NOTE deprecated use \\BOXCOMMENT#1}}
 %%% Math Commands
 
 %General math commands
@@ -20,8 +53,16 @@
 
 \newcommand{\pd}[1]{\ensuremath{\operatorname{\partial}\!{#1}}} 
 \newcommand{\npd}[2][2]{\ensuremath{\operatorname{\partial}^{#1}\!{#2}}} 
+\newcommand{\dd}[1]{\ensuremath{\operatorname{d}\!{#1}}} 
 \renewcommand{\d}[1]{\ensuremath{\operatorname{d}\!{#1}}} 
-\newcommand{\nd}[2][2]{\ensuremath{\operatorname{\d}^{#1}\!{#2}}} 
+\DeclareRobustCommand{\nd}[2][2]{\ensuremath{\operatorname{d}^{#1}\!{#2}}} 
+
+%bra - ket
+\newcommand{\bra}[1]{\ensuremath{\left<#1\right|}}
+\newcommand{\ket}[1]{\ensuremath{\left|#1\right>}}
+
+% angle bracket average
+\newcommand{\avg}[1]{\ensuremath{\left<#1\right>}}
 
 % complex numbers
 \renewcommand{\imath}{\mathit{i}}
@@ -30,9 +71,9 @@
 
 % derivatives
 \newcommand{\pdiv}[2]{\ensuremath{\frac{\pd{#1}}{\pd{#2}}}}
-\newcommand{\npdiv}[3][2]{\ensuremath{\frac{\npd[#1]{#2}}{\d{#3^#1}}}}
+\newcommand{\npdiv}[3][2]{\ensuremath{\frac{\npd[#1]{#2}}{\npd{#3^#1}}}}
 \newcommand{\tdiv}[2]{\ensuremath{\frac{\d{#1}}{\d{#2}}}}
-\newcommand{\ntdiv}[3][2]{\ensuremath{\frac{\nd[#1]{#2}}{\d{#3^#1}}}}
+\newcommand{\ntdiv}[3][2]{\ensuremath{\frac{\protect\nd[#1]{#2}}{\d{#3^#1}}}}
 %vector operators
 \newcommand{\vgrad}[1]{\ensuremath{\vec{\nabla} #1}}
 \newcommand{\vdiv}[1]{\ensuremath{\vec{\nabla \cdot #1}}}
