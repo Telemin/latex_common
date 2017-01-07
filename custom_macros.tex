@@ -47,9 +47,9 @@
 
 \newcommand{\unit}[1]{\ensuremath{\ \mathrm{#1}}}
 \renewcommand{\vec}[1]{\mathbf{#1}}
-\let\oldhat\hat
-\renewcommand{\hat}[1]{\oldhat{\mathbf{#1}}}
-\newcommand*{\E}{\unit{e}}
+\newcommand{\svec}[1]{\ensuremath{\bar{#1}}}
+\newcommand{\uvec}[1]{\hat{#1}}
+\newcommand*{\expE}{\unit{e}}
 
 \newcommand{\pd}[1]{\ensuremath{\operatorname{\partial}\!{#1}}} 
 \newcommand{\npd}[2][2]{\ensuremath{\operatorname{\partial}^{#1}\!{#2}}} 
@@ -75,7 +75,7 @@
 \newcommand{\tdiv}[2]{\ensuremath{\frac{\d{#1}}{\d{#2}}}}
 \newcommand{\ntdiv}[3][2]{\ensuremath{\frac{\protect\nd[#1]{#2}}{\d{#3^#1}}}}
 %vector operators
-\newcommand{\vgrad}[1]{\ensuremath{\vec{\nabla} #1}}
-\newcommand{\vdiv}[1]{\ensuremath{\vec{\nabla \cdot #1}}}
-\newcommand{\vcurl}[1]{\ensuremath{\vec{\nabla \times #1}}}
+\newcommand{\vgrad}[1]{\ensuremath{\nabla} #1}
+\newcommand{\vdiv}[1]{\ensuremath{\nabla \cdot #1}}
+\newcommand{\vcurl}[1]{\ensuremath{\nabla \times #1}}
 \newcommand{\vlap}[1]{\ensuremath{\nabla^2 #1}}
